@@ -1,19 +1,15 @@
 import { Routes } from '@angular/router';
-import { ConocenosComponent } from './components/conocenos.component/conocenos.component';
 import { HomeComponent } from './components/home.component/home.component';
-import { QuienesSomosComponent } from './components/quienes-somos.component/quienes-somos.component';
-import { ServiciosComponent } from './components/servicios.component/servicios.component';
+import { QuienesSomosComponent } from './components/sections/quienes-somos.component/quienes-somos.component';
+import { ServiciosComponent } from './components/sections/servicios.component/servicios.component';
+import { FormularioComponent } from './components/sections/formulario.component/formulario.component';
+import { EquipoComponent } from './components/sections/equipo.component/equipo.component';
 
 export const routes: Routes = [
     {
         path: '',
         title: 'Inicio',
         component: HomeComponent
-    },
-    {
-        path: 'conocenos',
-        title: 'Conocenos',
-        component: ConocenosComponent
     },
     {
         path: 'empresa',
@@ -24,5 +20,15 @@ export const routes: Routes = [
         path: 'servicios',
         title: 'Servicios',
         component: ServiciosComponent
+    },
+    {
+        path: 'equipo',
+        title: 'Nuestro Equipo',
+        component: EquipoComponent
+    },
+    {
+        path: 'formulario',
+        title: 'Contacto',
+        component: FormularioComponent
     }
 ];
