@@ -4,6 +4,7 @@ import { QuienesSomosComponent } from './components/sections/quienes-somos.compo
 import { ServiciosComponent } from './components/sections/servicios.component/servicios.component';
 import { FormularioComponent } from './components/sections/formulario.component/formulario.component';
 import { EquipoComponent } from './components/sections/equipo.component/equipo.component';
+import { PortfolioComponent } from './components/sections/portfolio.component/portfolio.component';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,11 @@ export const routes: Routes = [
         path: 'equipo',
         title: 'Nuestro Equipo',
         component: EquipoComponent
+    },
+    {
+        path: 'portfolio',
+        title: 'Portfolio',
+        component: PortfolioComponent
     },
     {
         path: 'formulario',

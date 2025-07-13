@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { 
@@ -30,7 +31,7 @@ interface Servicio {
 
 @Component({
   selector: 'app-servicios-component',
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule],
   templateUrl: './servicios.component.html',
   styleUrl: './servicios.component.css'
 })

@@ -1,0 +1,810 @@
+/* ========== PORTFOLIO HERO CARD ========== */
+.portfolio-hero-card {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  box-shadow: 
+    0 25px 80px rgba(21, 26, 56, 0.6),
+    inset 0 1px 0 rgba(156, 183, 237, 0.1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  min-height: 500px;
+}
+
+/* Mejoras para el overlay del hero card */
+.portfolio-hero-card .absolute.inset-0 {
+  background: linear-gradient(
+    135deg, 
+    rgba(21, 26, 56, 0.95) 0%, 
+    rgba(21, 26, 56, 0.8) 40%, 
+    rgba(21, 26, 56, 0.4) 70%, 
+    transparent 100%
+  );
+}
+
+/* Mejor legibilidad del texto */
+.portfolio-hero-card h3 {
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);
+}
+
+.portfolio-hero-card p {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+
+@media (min-width: 1024px) {
+  .portfolio-hero-card {
+    min-height: 600px;
+  }
+}
+
+.portfolio-hero-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 35px 100px rgba(21, 26, 56, 0.8),
+    0 0 60px rgba(156, 183, 237, 0.4);
+}
+
+.portfolio-hero-btn {
+  background: linear-gradient(135deg, var(--nox-accent) 0%, var(--nox-bright) 100%);
+  color: var(--nox-dark);
+  padding: 16px 32px;
+  border-radius: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  box-shadow: 
+    0 8px 25px rgba(156, 183, 237, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-hero-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 15px 40px rgba(156, 183, 237, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Efecto de brillo en el botón hero */
+.portfolio-hero-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
+}
+
+.portfolio-hero-btn:hover::before {
+  left: 100%;
+}
+
+/* ========== PORTFOLIO FEATURED CARDS ========== */
+.portfolio-featured-card {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border-radius: 12px;
+  box-shadow: 0 15px 50px rgba(21, 26, 56, 0.4);
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.portfolio-featured-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 25px 70px rgba(21, 26, 56, 0.6),
+    0 0 40px rgba(156, 183, 237, 0.3);
+}
+
+/* ========== PORTFOLIO MASONRY LAYOUT ========== */
+.portfolio-masonry {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  grid-auto-rows: minmax(320px, auto);
+}
+
+.portfolio-masonry-item {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 
+    0 15px 50px rgba(21, 26, 56, 0.4),
+    inset 0 1px 0 rgba(156, 183, 237, 0.1);
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  animation: portfolioCardReveal 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.portfolio-masonry-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-masonry-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-masonry-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-masonry-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-masonry-item:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-masonry-item:nth-child(6) { animation-delay: 0.6s; }
+
+.portfolio-masonry-item.tall {
+  grid-row: span 2;
+  min-height: 420px;
+}
+
+.portfolio-masonry-item.wide {
+  grid-column: span 2;
+}
+
+.portfolio-masonry-item:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 30px 80px rgba(21, 26, 56, 0.6),
+    0 0 60px rgba(156, 183, 237, 0.4);
+  z-index: 20;
+}
+
+.portfolio-masonry-item.selected {
+  border: 3px solid var(--nox-bright);
+  box-shadow: 
+    0 35px 90px rgba(21, 26, 56, 0.7),
+    0 0 80px rgba(156, 183, 237, 0.6);
+  transform: translateY(-15px) scale(1.03);
+  z-index: 30;
+}
+
+.portfolio-masonry-bg {
+  background-size: cover;
+  background-position: center;
+  background-color: rgba(21, 26, 56, 0.8);
+  transition: all 0.6s ease;
+}
+
+.portfolio-masonry-bg:not([style*="background-image"]) {
+  background: linear-gradient(135deg, rgba(21, 26, 56, 0.9), rgba(26, 32, 67, 0.8));
+}
+
+/* ========== CATEGORY BADGES ========== */
+.portfolio-category-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.portfolio-category-badge.blue {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+  color: #60a5fa;
+}
+
+.portfolio-category-badge.purple {
+  background: rgba(147, 51, 234, 0.2);
+  border-color: rgba(147, 51, 234, 0.4);
+  color: #a78bfa;
+}
+
+.portfolio-category-badge.green {
+  background: rgba(34, 197, 94, 0.2);
+  border-color: rgba(34, 197, 94, 0.4);
+  color: #4ade80;
+}
+
+.portfolio-category-badge.yellow {
+  background: rgba(234, 179, 8, 0.2);
+  border-color: rgba(234, 179, 8, 0.4);
+  color: #facc15;
+}
+
+.portfolio-category-badge.red {
+  background: rgba(239, 68, 68, 0.2);
+  border-color: rgba(239, 68, 68, 0.4);
+  color: #f87171;
+}
+
+.portfolio-category-badge.indigo {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.4);
+  color: #818cf8;
+}
+
+/* ========== STATUS BADGES ========== */
+.portfolio-status-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+/* ========== HOVER ACTIONS ========== */
+.portfolio-hover-action {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px 16px;
+  border-radius: 20px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.portfolio-hover-action:hover {
+  background: var(--nox-accent);
+  color: var(--nox-dark);
+  border-color: var(--nox-accent);
+}
+
+/* ========== RESPONSIVE MASONRY ========== */
+@media (max-width: 768px) {
+  .portfolio-masonry {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    grid-auto-rows: minmax(280px, auto);
+  }
+  
+  .portfolio-masonry-item {
+    min-height: 280px;
+  }
+  
+  .portfolio-masonry-item.tall,
+  .portfolio-masonry-item.wide {
+    grid-row: span 1;
+    grid-column: span 1;
+    min-height: 280px;
+  }
+  
+  .portfolio-hero-card {
+    min-height: 400px !important;
+  }
+  
+  .portfolio-hero-card .max-w-4xl {
+    max-width: 100%;
+    padding: 1.5rem !important;
+  }
+  
+  .portfolio-hero-card h3 {
+    font-size: 2rem !important;
+    line-height: 1.2 !important;
+  }
+  
+  .portfolio-hero-card p {
+    font-size: 1rem !important;
+    line-height: 1.5 !important;
+  }
+  
+  .portfolio-featured-card {
+    height: 200px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .portfolio-hero-card {
+    min-height: 450px;
+  }
+  
+  .portfolio-masonry {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+  }
+  
+  .portfolio-masonry-item {
+    min-height: 300px;
+  }
+  
+  .portfolio-masonry-item.tall {
+    min-height: 400px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .portfolio-masonry {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(320px, auto);
+  }
+  
+  .portfolio-masonry-item {
+    min-height: 320px;
+  }
+  
+  .portfolio-masonry-item.tall {
+    min-height: 420px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .portfolio-masonry {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ========== LEGACY STYLES (keeping for details view) ========== */
+
+/* Portfolio Details - Mantenemos para la vista detallada */
+.portfolio-details {
+  background: linear-gradient(135deg, rgba(21, 26, 56, 0.85) 0%, rgba(26, 32, 67, 0.9) 100%);
+  backdrop-filter: blur(25px);
+  border: 2px solid rgba(156, 183, 237, 0.6);
+  animation: portfolioReveal 0.8s ease-out;
+  box-shadow: 
+    0 30px 90px rgba(21, 26, 56, 0.6),
+    inset 0 1px 0 rgba(156, 183, 237, 0.2),
+    0 0 60px rgba(156, 183, 237, 0.2);
+  position: relative;
+}
+
+@keyframes portfolioReveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.portfolio-details::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, transparent 49%, rgba(156, 183, 237, 0.05) 50%, transparent 51%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.portfolio-details > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* ========== GENERAL STYLES ========== */
+
+/* Efectos hover para los iconos de FontAwesome */
+.portfolio-masonry-item fa-icon,
+.portfolio-featured-card fa-icon,
+.portfolio-hero-card fa-icon,
+.portfolio-details fa-icon {
+  transition: all 0.3s ease;
+}
+
+.portfolio-masonry-item:hover fa-icon,
+.portfolio-featured-card:hover fa-icon,
+.portfolio-hero-card:hover fa-icon {
+  filter: drop-shadow(0 4px 8px rgba(156, 183, 237, 0.5));
+}
+
+.portfolio-details fa-icon {
+  filter: drop-shadow(0 2px 4px rgba(156, 183, 237, 0.3));
+}
+
+/* Animaciones para las estrellas de rating */
+.text-yellow-400 {
+  animation: starGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes starGlow {
+  0% { 
+    filter: drop-shadow(0 0 2px rgba(255, 193, 7, 0.5));
+  }
+  100% { 
+    filter: drop-shadow(0 0 8px rgba(255, 193, 7, 0.8));
+  }
+}
+
+/* Line clamp para texto truncado */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Mejoras de accesibilidad */
+.portfolio-masonry-item:focus,
+.portfolio-featured-card:focus,
+.portfolio-hero-card:focus,
+.portfolio-details button:focus {
+  outline: 2px solid var(--nox-accent);
+  outline-offset: 2px;
+}
+
+/* Efectos de paralaje sutil para el fondo */
+.cosmic-void {
+  position: relative;
+}
+
+.cosmic-void::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 25% 25%, rgba(156, 183, 237, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 193, 0, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(156, 183, 237, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: cosmicFloat 20s ease-in-out infinite;
+}
+
+@keyframes cosmicFloat {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: translateY(-20px) rotate(2deg);
+    opacity: 0.5;
+  }
+}
+
+/* Smooth scrolling para detalles */
+.portfolio-details {
+  scroll-margin-top: 2rem;
+}
+
+/* Transiciones globales */
+* {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+/* ========== MASONRY CARD CONTENT ORGANIZATION ========== */
+.portfolio-masonry-content {
+  position: absolute;
+  inset: 0;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 10;
+  height: 100%;
+}
+
+.portfolio-masonry-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: auto;
+}
+
+.portfolio-masonry-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem 0;
+  transform: translateY(10px);
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-body {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.portfolio-masonry-footer {
+  margin-top: auto;
+}
+
+.portfolio-masonry-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+}
+
+.portfolio-masonry-description {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.875rem;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+  transition: all 0.3s ease;
+  transition-delay: 0.15s;
+}
+
+.portfolio-masonry-metrics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  transition: all 0.3s ease;
+  transition-delay: 0.2s;
+}
+
+.portfolio-masonry-users {
+  color: var(--nox-accent);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.portfolio-masonry-date {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+}
+
+/* Always visible action button */
+.portfolio-masonry-action {
+  background: rgba(156, 183, 237, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(156, 183, 237, 0.3);
+  padding: 0.75rem 1.25rem;
+  border-radius: 12px;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  opacity: 0.8;
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-action {
+  background: var(--nox-accent);
+  color: var(--nox-dark);
+  border-color: var(--nox-accent);
+  opacity: 1;
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 30px rgba(156, 183, 237, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Tech stack badges in hover state */
+.portfolio-masonry-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.portfolio-masonry-tech-badge {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+/* Featured project indicator */
+.portfolio-masonry-featured {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px);
+  border: 1px solid;
+  border-radius: 20px;
+  padding: 0.375rem 0.75rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+/* Featured projects - destacados */
+.portfolio-masonry-featured.bg-yellow-featured {
+  background: rgba(255, 193, 7, 0.2);
+}
+
+.portfolio-masonry-featured.border-yellow-featured {
+  border-color: rgba(255, 193, 7, 0.4);
+}
+
+/* Regular projects - no destacados */
+.portfolio-masonry-featured.bg-white-featured {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.portfolio-masonry-featured.border-white-featured {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-featured.bg-white-featured {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-featured.border-white-featured {
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Text colors */
+.text-white-muted {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.text-white-light {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.portfolio-masonry-featured-text {
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-left: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+/* Subtle glow for featured projects */
+.portfolio-masonry-item:hover .portfolio-masonry-featured.bg-yellow-featured {
+  box-shadow: 0 0 20px rgba(255, 193, 7, 0.3);
+}
+
+/* Subtle highlight for regular projects */
+.portfolio-masonry-item:hover .portfolio-masonry-featured.bg-white-featured {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+}
+
+/* Improved overlay gradients */
+.portfolio-masonry-overlay-main {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg, 
+    rgba(21, 26, 56, 0.85) 0%, 
+    rgba(21, 26, 56, 0.4) 50%, 
+    rgba(21, 26, 56, 0.8) 100%
+  );
+  opacity: 0.8;
+  transition: opacity 0.5s ease;
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-overlay-main {
+  opacity: 0.9;
+}
+
+.portfolio-masonry-overlay-colored {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-overlay-colored {
+  opacity: 0.15;
+}
+
+/* ========== IMPROVED MASONRY ANIMATIONS ========== */
+@keyframes portfolioCardReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.portfolio-masonry-item {
+  animation: portfolioCardReveal 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.portfolio-masonry-item:nth-child(1) { animation-delay: 0.1s; }
+.portfolio-masonry-item:nth-child(2) { animation-delay: 0.2s; }
+.portfolio-masonry-item:nth-child(3) { animation-delay: 0.3s; }
+.portfolio-masonry-item:nth-child(4) { animation-delay: 0.4s; }
+.portfolio-masonry-item:nth-child(5) { animation-delay: 0.5s; }
+.portfolio-masonry-item:nth-child(6) { animation-delay: 0.6s; }
+
+/* Enhanced hover effects */
+.portfolio-masonry-item:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 
+    0 30px 80px rgba(21, 26, 56, 0.6),
+    0 0 60px rgba(156, 183, 237, 0.4);
+  z-index: 20;
+}
+
+.portfolio-masonry-item.selected {
+  border: 3px solid var(--nox-bright);
+  box-shadow: 
+    0 35px 90px rgba(21, 26, 56, 0.7),
+    0 0 80px rgba(156, 183, 237, 0.6);
+  transform: translateY(-15px) scale(1.03);
+  z-index: 30;
+}
+
+/* Improved action button animations */
+.portfolio-masonry-action {
+  transform: translateY(0);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-action {
+  transform: translateY(-4px);
+  box-shadow: 
+    0 12px 30px rgba(156, 183, 237, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Staggered content animations */
+.portfolio-masonry-title {
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+}
+
+.portfolio-masonry-description {
+  transition: all 0.3s ease;
+  transition-delay: 0.15s;
+}
+
+.portfolio-masonry-metrics {
+  transition: all 0.3s ease;
+  transition-delay: 0.2s;
+}
+
+.portfolio-masonry-action {
+  transition-delay: 0.25s;
+}
+
+/* Hover state improvements */
+.portfolio-masonry-item:hover .portfolio-masonry-title {
+  text-shadow: 0 4px 12px rgba(156, 183, 237, 0.3);
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-description {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+}
+
+.portfolio-masonry-item:hover .portfolio-masonry-users {
+  color: var(--nox-bright);
+  text-shadow: 0 0 10px rgba(156, 183, 237, 0.5);
+}
+
+/* Focus states for accessibility */
+.portfolio-masonry-item:focus {
+  outline: 3px solid var(--nox-accent);
+  outline-offset: 4px;
+}
+
+.portfolio-masonry-item:focus-visible {
+  outline: 3px solid var(--nox-bright);
+  outline-offset: 4px;
+}
